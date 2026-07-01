@@ -79,7 +79,6 @@ public class PlayerAttack : MonoBehaviour
     public void OnAttackInput(InputValue value)
     {
         if (!value.isPressed) return;
-        Debug.Log($"Attack");
         TryAttack();
     }
 
@@ -121,10 +120,8 @@ public class PlayerAttack : MonoBehaviour
         bool hitAny = false;
         for (int i = 0; i < count; i++)
         {
-            Debug.Log($"count = {count}");
             if (hitResults[i].TryGetComponent<IDamageable>(out var target) && !target.IsDead)
             {
-                Debug.Log($"<color=green><b>{hitResults[i].name}</color></b> TakeDamage = {damage}");
                 target.TakeDamage(damage);
                 hitAny = true;
             }
